@@ -1,0 +1,1250 @@
+/* ==========================================================================
+   PORTFÓLIO CAMPOS - ESTILOS PRINCIPAIS
+   Identidade: Roxo Profundo, Degradê Dourado, Tipografia Expressiva
+   Referências: Noth.in (tipografia monumental), Cactus Digitale / Lusion (profundidade espacial 3D)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   VARIÁVEIS DE SISTEMA / TOKENS DE DESIGN
+   -------------------------------------------------------------------------- */
+:root {
+  /* Modo Escuro (Padrão) */
+  --bg-primary: #0D0A14;
+  --bg-surface: #1A1230;
+  --bg-surface-glass: rgba(26, 18, 48, 0.72);
+  --bg-surface-glass-border: rgba(109, 40, 217, 0.32);
+  
+  --text-primary: #F4F0FA;
+  --text-secondary: #B7A8D0;
+  --text-muted: #796A94;
+  
+  --purple-primary: #6D28D9;
+  --purple-glow: rgba(109, 40, 217, 0.45);
+  --purple-glow-soft: rgba(109, 40, 217, 0.18);
+  --purple-ring: rgba(109, 40, 217, 0.28);
+  
+  /* Degradê Dourado Oficial (identidade.md) */
+  --gradient-gold: linear-gradient(135deg, #FFE08A 0%, #F5B63A 45%, #B8860B 100%);
+  --gold-primary: #F5B63A;
+  --gold-glow: rgba(245, 182, 58, 0.38);
+  --gold-line: rgba(245, 182, 58, 0.48);
+  --gold-line-subtle: rgba(245, 182, 58, 0.18);
+  
+  --btn-text: #0D0A14;
+  --badge-bg: rgba(109, 40, 217, 0.2);
+  --badge-border: rgba(245, 182, 58, 0.35);
+
+  /* Efeito de Tinta nos Títulos (Modo Escuro) */
+  --title-base-gradient: linear-gradient(180deg, #FFFFFF 30%, #E3D8F5 75%, #B7A8D0 100%);
+  --title-shadow: 0 10px 40px rgba(0, 0, 0, 0.75), 0 0 60px rgba(109, 40, 217, 0.35);
+  --title-shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 50px rgba(245, 182, 58, 0.55);
+
+  /* Tipografia */
+  --font-title: 'Bowlby One', cursive, sans-serif;
+  --font-body: 'Host Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Transições e Curvas */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.2s var(--ease-smooth);
+  --transition-normal: 0.35s var(--ease-out-expo);
+  --transition-slow: 0.6s var(--ease-out-expo);
+}
+
+/* Modo Claro (já estruturado para a próxima etapa) */
+[data-theme="light"] {
+  --bg-primary: #F6F2FA;
+  --bg-surface: #FFFFFF;
+  --bg-surface-glass: rgba(255, 255, 255, 0.85);
+  --bg-surface-glass-border: rgba(91, 33, 182, 0.2);
+  
+  --text-primary: #1A1024;
+  --text-secondary: #4F4362;
+  --text-muted: #817296;
+  
+  --purple-primary: #5B21B6;
+  --purple-glow: rgba(91, 33, 182, 0.25);
+  --purple-glow-soft: rgba(91, 33, 182, 0.1);
+  --purple-ring: rgba(91, 33, 182, 0.2);
+  
+  /* Degradê Dourado mantido, com contornos adaptados para contraste */
+  --gradient-gold: linear-gradient(135deg, #FFE08A 0%, #F5B63A 45%, #B8860B 100%);
+  --gold-primary: #B8860B;
+  --gold-glow: rgba(184, 134, 11, 0.25);
+  --gold-line: rgba(184, 134, 11, 0.55);
+  --gold-line-subtle: rgba(184, 134, 11, 0.22);
+  
+  --btn-text: #1A1024;
+  --badge-bg: rgba(91, 33, 182, 0.1);
+  --badge-border: rgba(184, 134, 11, 0.4);
+
+  /* Efeito de Tinta nos Títulos (Modo Claro) */
+  --title-base-gradient: linear-gradient(180deg, #1A1024 40%, #35224D 80%, #5B21B6 100%);
+  --title-shadow: 0 10px 30px rgba(91, 33, 182, 0.15);
+  --title-shadow-hover: 0 10px 35px rgba(184, 134, 11, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   RESET & SETUP GLOBAL
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* --------------------------------------------------------------------------
+   HEADER & MENU FIXO
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 1.25rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  padding: 0 1.25rem;
+  pointer-events: none; /* Permite cliques fora do container da barra */
+}
+
+.nav-container {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 980px;
+  padding: 0.65rem 1.25rem;
+  background: var(--bg-surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--bg-surface-glass-border);
+  border-radius: 9999px;
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.45);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.brand-monogram {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: var(--purple-glow-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--purple-ring);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--purple-ring);
+  color: var(--text-primary);
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--purple-glow-soft);
+  border-color: var(--gold-line);
+  transform: rotate(20deg) scale(1.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+.theme-toggle-btn .material-symbols-outlined {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform var(--transition-normal);
+}
+
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(91, 33, 182, 0.08);
+  border-color: rgba(91, 33, 182, 0.22);
+  color: var(--purple-primary);
+  box-shadow: 0 2px 8px rgba(91, 33, 182, 0.08);
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(91, 33, 182, 0.16);
+  border-color: var(--gold-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .theme-toggle-btn .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+[data-theme="light"] .nav-container {
+  box-shadow: 0 12px 36px -8px rgba(91, 33, 182, 0.12);
+}
+
+[data-theme="light"] .field-boundary {
+  background: radial-gradient(ellipse at center, rgba(91, 33, 182, 0.06) 0%, rgba(246, 242, 250, 0.6) 100%);
+  box-shadow: 
+    0 0 25px rgba(184, 134, 11, 0.15),
+    inset 0 0 40px rgba(91, 33, 182, 0.08);
+}
+
+[data-theme="light"] .cta-button {
+  box-shadow: 
+    0 8px 24px -4px rgba(184, 134, 11, 0.35),
+    0 2px 6px rgba(91, 33, 182, 0.12);
+}
+
+[data-theme="light"] .cta-button:hover {
+  box-shadow: 
+    0 14px 34px -4px rgba(184, 134, 11, 0.5),
+    0 4px 12px rgba(91, 33, 182, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION - ESTRUTURA GERAL
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5rem 1.5rem 4rem;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   ELEMENTO VISUAL DE APOIO (CSS PURO)
+   Círculos concêntricos roxos + Linhas de quadra e campo em degradê/contorno dourado
+   Sensação de espaço e profundidade (Cactus Digitale / Lusion)
+   -------------------------------------------------------------------------- */
+.visual-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  max-width: 1600px;
+  max-height: 1000px;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+/* Círculos Concêntricos */
+.concentric-system {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(var(--parallax-bg-x, 0px), var(--parallax-bg-y, 0px), 0);
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.radial-glow {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--purple-glow) 0%, rgba(109, 40, 217, 0.1) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.8;
+  animation: pulseGlow 7s ease-in-out infinite alternate;
+}
+
+.concentric-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--purple-ring);
+  box-shadow: inset 0 0 20px var(--purple-glow-soft);
+}
+
+.ring-1 { width: 220px; height: 220px; border-width: 1px; opacity: 0.85; }
+.ring-2 { width: 380px; height: 380px; border-width: 1.5px; opacity: 0.65; border-style: dashed; }
+.ring-3 { width: 560px; height: 560px; border-width: 1px; opacity: 0.45; }
+.ring-4 { width: 760px; height: 760px; border-width: 1.5px; opacity: 0.3; border-style: dashed; }
+.ring-5 { width: 980px; height: 980px; border-width: 1px; opacity: 0.18; }
+
+/* Linhas Táticas do Campo e Quadra (Isometria & Profundidade 3D) */
+.tactical-field {
+  position: absolute;
+  width: 680px;
+  height: 440px;
+  /* Inclinação tática tipo arena 3D */
+  transform: 
+    translate3d(var(--parallax-field-x, 0px), var(--parallax-field-y, 0px), 0)
+    rotateX(58deg)
+    rotateZ(-16deg);
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+  opacity: 0.85;
+}
+
+.field-boundary {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--gold-line);
+  box-shadow: 
+    0 0 25px rgba(245, 182, 58, 0.15),
+    inset 0 0 40px rgba(109, 40, 217, 0.25);
+  background: radial-gradient(ellipse at center, rgba(109, 40, 217, 0.12) 0%, rgba(13, 10, 20, 0.3) 100%);
+  border-radius: 4px;
+}
+
+/* Futebol: Meio de campo e círculo central */
+.half-pitch-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.5px;
+  height: 100%;
+  background: var(--gold-line);
+  transform: translateX(-50%);
+}
+
+.center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  border: 1.5px solid var(--gold-line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(245, 182, 58, 0.2);
+}
+
+.center-spot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold-primary);
+}
+
+.penalty-box {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 90px;
+  height: 180px;
+  border: 1px solid var(--gold-line-subtle);
+  border-left: none;
+  transform: translateY(-50%);
+}
+
+.penalty-arc {
+  position: absolute;
+  top: 50%;
+  left: 90px;
+  width: 48px;
+  height: 90px;
+  border-right: 1px dashed var(--gold-line-subtle);
+  border-radius: 0 90px 90px 0;
+  transform: translateY(-50%);
+}
+
+/* Futevôlei: Sobreposição de marcações de areia */
+.sand-court-overlay {
+  position: absolute;
+  top: 15%;
+  right: 6%;
+  width: 220px;
+  height: 70%;
+  border: 1px dashed var(--gold-line);
+  background: rgba(245, 182, 58, 0.03);
+}
+
+.sand-net-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-gold);
+  box-shadow: 0 0 10px var(--gold-primary);
+}
+
+.sand-attack-zone {
+  position: absolute;
+  top: 28%;
+  left: 0;
+  width: 100%;
+  height: 44%;
+  border-top: 1px dotted var(--gold-line-subtle);
+  border-bottom: 1px dotted var(--gold-line-subtle);
+}
+
+/* Marcadores táticos em texto nos cantos do campo */
+.coord {
+  position: absolute;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold-primary);
+  opacity: 0.7;
+}
+
+.coord-tl { top: 8px; left: 10px; }
+.coord-br { bottom: 8px; right: 10px; }
+
+/* --------------------------------------------------------------------------
+   CONTEÚDO DO HERO (TIPOGRAFIA MONUMENTAL - NOTH.IN)
+   -------------------------------------------------------------------------- */
+.hero-sport-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 1.1rem;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-primary);
+  box-shadow: 0 0 8px var(--gold-primary);
+  animation: pulseDot 2.2s infinite ease-in-out;
+}
+
+.badge-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.badge-division {
+  width: 1px;
+  height: 12px;
+  background: var(--purple-ring);
+}
+
+.badge-location {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* Título CAMPOS em tamanho extremo (Noth.in) */
+.hero-title-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+  user-select: none;
+  transform: translate3d(var(--parallax-title-x, 0px), var(--parallax-title-y, 0px), 0);
+  transition: transform 0.22s ease-out;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+}
+
+/* Efeito de Tinta nos Títulos (identidade.md)
+   Ao passar o mouse ou tocar, o degradê dourado preenche as letras da esquerda para a direita */
+.hero-name,
+.ink-title {
+  font-family: var(--font-title);
+  /* Escala fluida monumental: maciça sem quebrar em 375px */
+  font-size: clamp(3rem, 14.5vw, 13.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+
+  /* Camada 1: Degradê Dourado Oficial (tinta expansiva)
+     Camada 2: Gradiente base do título (conforme o tema) */
+  background-image: 
+    var(--gradient-gold),
+    var(--title-base-gradient);
+  background-size: 0% 100%, 100% 100%;
+  background-position: left center, center center;
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  text-shadow: var(--title-shadow);
+
+  /* Transição suave do preenchimento de tinta da esquerda para a direita */
+  transition: 
+    background-size 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    text-shadow 0.5s ease,
+    transform 0.35s var(--ease-out-expo);
+}
+
+/* Hover no Desktop, Toque no Celular (:active e classe .is-ink-filled) */
+.hero-name:hover,
+.hero-name:active,
+.hero-name.is-ink-filled,
+.ink-title:hover,
+.ink-title:active,
+.ink-title.is-ink-filled {
+  background-size: 100% 100%, 100% 100%;
+  text-shadow: var(--title-shadow-hover);
+}
+
+/* Frase de apresentação */
+.hero-tagline {
+  font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  margin: 0 auto 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------------------------------------------
+   CTA - BOTÃO EM DEGRADÊ DOURADO
+   -------------------------------------------------------------------------- */
+.hero-cta-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.05rem 2.4rem;
+  background: var(--gradient-gold);
+  color: var(--btn-text);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 24px -4px rgba(245, 182, 58, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 14px 34px -4px rgba(245, 182, 58, 0.65),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.cta-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.cta-arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.cta-button:hover .cta-icon-wrapper {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   INDICADOR DE SCROLL
+   -------------------------------------------------------------------------- */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.65;
+  transition: opacity var(--transition-fast);
+}
+
+.scroll-track {
+  width: 18px;
+  height: 30px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 9999px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 4px;
+}
+
+.scroll-thumb {
+  width: 4px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 9999px;
+  animation: scrollBob 2s infinite ease-in-out;
+}
+
+.scroll-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+}
+
+/* Âncora alvo para o scroll suave do CTA e seções com margem para o cabeçalho fixo */
+section[id],
+.section-anchor-target {
+  position: relative;
+  scroll-margin-top: 5.5rem;
+}
+
+.section-anchor-target {
+  width: 100%;
+  height: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   SEÇÃO SOBRE MIM
+   -------------------------------------------------------------------------- */
+.about-section {
+  position: relative;
+  width: 100%;
+  padding: 6.5rem 1.5rem 7.5rem;
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  z-index: 20;
+  transition: background-color var(--transition-normal);
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* Cabeçalho da Seção */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+}
+
+.tag-number {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  color: var(--purple-primary);
+  background: var(--purple-glow-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--purple-ring);
+}
+
+.tag-slash {
+  opacity: 0.5;
+}
+
+.section-title.ink-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.3rem, 5.5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Grid Principal (Foto + Conteúdo) */
+.about-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Card da Foto Placeholder */
+.about-photo-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--bg-surface-glass-border);
+  box-shadow: 
+    0 20px 45px -10px rgba(0, 0, 0, 0.5),
+    0 0 30px var(--purple-glow-soft);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.about-photo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-line);
+  box-shadow: 
+    0 28px 55px -10px rgba(0, 0, 0, 0.6),
+    0 0 35px var(--gold-glow);
+}
+
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.athlete-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.about-photo-card:hover .athlete-photo {
+  transform: scale(1.03);
+}
+
+.photo-overlay-glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(13, 10, 20, 0.85) 100%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .photo-overlay-glass {
+  background: linear-gradient(180deg, transparent 50%, rgba(26, 16, 36, 0.65) 100%);
+}
+
+.photo-badge-top {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  background: rgba(13, 10, 20, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--purple-ring);
+  border-radius: 9999px;
+}
+
+.badge-status-dot {
+  width: 7px;
+  height: 7px;
+  background: #22C55E;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22C55E;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.badge-status-text {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #F4F0FA;
+}
+
+.photo-badge-bottom {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.photo-athlete-name {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.photo-athlete-role {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+}
+
+/* Cantos táticos (Brackets de visor) */
+.photo-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border: 2px solid var(--gold-line);
+}
+
+.corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+/* Coluna de Texto e Destaques */
+.about-content-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.bio-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bio-lead {
+  font-size: clamp(1.12rem, 1.45vw, 1.3rem);
+  font-weight: 500;
+  line-height: 1.72;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.bio-secondary {
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* Grade de Destaques da Carreira */
+.career-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+  padding-top: 0.5rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  background: var(--bg-surface-glass);
+  border: 1px solid var(--bg-surface-glass-border);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.highlight-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-line);
+  background: var(--bg-surface);
+}
+
+.highlight-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  background: var(--purple-glow-soft);
+  border: 1px solid var(--purple-ring);
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.highlight-item:hover .highlight-icon {
+  transform: scale(1.08);
+  background: var(--purple-glow);
+}
+
+.highlight-icon .material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+.highlight-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.highlight-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.highlight-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+[data-theme="light"] .about-photo-card {
+  box-shadow: 
+    0 20px 45px -10px rgba(91, 33, 182, 0.12),
+    0 0 25px rgba(91, 33, 182, 0.08);
+}
+
+[data-theme="light"] .highlight-item {
+  box-shadow: 0 4px 14px rgba(91, 33, 182, 0.06);
+}
+
+@media (max-width: 900px) {
+  .about-section {
+    padding: 5rem 1.25rem 6rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-photo-card {
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .career-highlights {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   KEYFRAMES DE ANIMAÇÃO
+   -------------------------------------------------------------------------- */
+@keyframes pulseGlow {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.08); opacity: 0.95; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+@keyframes scrollBob {
+  0% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(10px); opacity: 0.2; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVIDADE (Testado para 375px e 1440px)
+   -------------------------------------------------------------------------- */
+
+/* Telas Pequenas / Mobile (ex: 375px) */
+@media (max-width: 640px) {
+  .site-header {
+    top: 0.75rem;
+    padding: 0 0.75rem;
+  }
+
+  .nav-container {
+    padding: 0.5rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .brand-badge {
+    display: none; /* Mantém minimalismo no mobile */
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+  }
+
+  .theme-toggle-btn {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+
+  .hero-section {
+    padding: 6.5rem 1.15rem 3rem;
+  }
+
+  .hero-sport-badge {
+    padding: 0.35rem 0.85rem;
+    gap: 0.5rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .badge-text {
+    font-size: 0.75rem;
+  }
+
+  .badge-location {
+    font-size: 0.68rem;
+  }
+
+  .hero-title-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    padding: 0.95rem 1.9rem;
+    font-size: 0.98rem;
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Desativa parallax e ajusta dimensões do elemento visual para telas menores */
+  .visual-stage {
+    perspective: none;
+    max-width: 100vw;
+  }
+
+  .tactical-field {
+    width: 310px;
+    height: 200px;
+    transform: rotateX(46deg) rotateZ(-10deg) scale(0.85) !important;
+    opacity: 0.55;
+  }
+
+  .concentric-system {
+    width: 360px;
+    height: 360px;
+    transform: none !important;
+  }
+
+  .radial-glow {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Telas Médias / Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 7rem 2rem 3.5rem;
+  }
+
+  .tactical-field {
+    width: 520px;
+    height: 340px;
+    transform: rotateX(54deg) rotateZ(-14deg) scale(0.9);
+  }
+}
+
+/* Telas Grandes (1440px+) */
+@media (min-width: 1440px) {
+  .hero-container {
+    max-width: 1400px;
+  }
+
+  .tactical-field {
+    width: 760px;
+    height: 480px;
+  }
+
+  .concentric-system {
+    width: 1100px;
+    height: 1100px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   ACESSIBILIDADE: PREFERS-REDUCED-MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .concentric-system,
+  .tactical-field,
+  .hero-title-wrapper {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .tactical-field {
+    transform: rotateX(50deg) rotateZ(-12deg) !important;
+  }
+
+  .radial-glow,
+  .badge-dot,
+  .scroll-thumb {
+    animation: none !important;
+  }
+}

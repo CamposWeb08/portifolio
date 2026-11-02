@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <!-- Gradiente de fundo esportivo -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140E24"/>
+      <stop offset="40%" stop-color="#1F133B"/>
+      <stop offset="85%" stop-color="#0E0918"/>
+      <stop offset="100%" stop-color="#090610"/>
+    </linearGradient>
+
+    <!-- Gradiente Dourado Oficial -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE08A"/>
+      <stop offset="45%" stop-color="#F5B63A"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+
+    <!-- Gradiente Roxo Glow -->
+    <radialGradient id="purpleGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#6D28D9" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#6D28D9" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0D0A14" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Padrão de Grade Tática -->
+    <pattern id="tacticalGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#6D28D9" stroke-width="0.75" stroke-opacity="0.2"/>
+    </pattern>
+  </defs>
+
+  <!-- Fundo base -->
+  <rect width="800" height="1000" fill="url(#bgGrad)"/>
+  
+  <!-- Iluminação roxa de estádio -->
+  <rect width="800" height="1000" fill="url(#purpleGlow)"/>
+  
+  <!-- Grade tática sutil -->
+  <rect width="800" height="1000" fill="url(#tacticalGrid)"/>
+
+  <!-- Linhas táticas de campo/quadra no fundo da foto -->
+  <g opacity="0.35">
+    <circle cx="400" cy="500" r="260" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="8 6"/>
+    <circle cx="400" cy="500" r="140" fill="none" stroke="#6D28D9" stroke-width="2"/>
+    <circle cx="400" cy="500" r="6" fill="#F5B63A"/>
+    <line x1="80" y1="500" x2="720" y2="500" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.7"/>
+    <line x1="400" y1="120" x2="400" y2="880" stroke="#6D28D9" stroke-width="1.5" stroke-opacity="0.5"/>
+  </g>
+
+  <!-- Silhueta dinâmica de atleta (Meio-campo / Futevôlei) -->
+  <g transform="translate(400, 480)" text-anchor="middle">
+    <!-- Círculos de energia / radar da silhueta -->
+    <circle cx="0" cy="-30" r="180" fill="none" stroke="#6D28D9" stroke-width="1" stroke-opacity="0.4"/>
+    <circle cx="0" cy="-30" r="210" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="4 4"/>
+
+    <!-- Ícone esportivo estilizado do Atleta -->
+    <path d="M -45 -140 C -45 -165, -25 -185, 0 -185 C 25 -185, 45 -165, 45 -140 C 45 -115, 25 -95, 0 -95 C -25 -95, -45 -115, -45 -140 Z" fill="#E3D8F5" opacity="0.9"/>
+    
+    <!-- Torso atlético dinâmico em vetor com linhas de corte -->
+    <path d="M -90 -70 L 90 -70 L 115 60 L 60 180 L -60 180 L -115 60 Z" fill="#6D28D9" opacity="0.35" stroke="url(#goldGrad)" stroke-width="2"/>
+    <path d="M -60 -50 L 60 -50 L 80 50 L 40 150 L -40 150 L -80 50 Z" fill="#1A1230" opacity="0.8"/>
+    
+    <!-- Faixas de movimento / energia dourada -->
+    <path d="M -130 -10 Q 0 -60 130 -10" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M -100 80 Q 0 40 100 80" fill="none" stroke="#6D28D9" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Número 08 estampado -->
+    <text x="0" y="70" font-family="'Bowlby One', Impact, sans-serif" font-size="96" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="2">08</text>
+  </g>
+
+  <!-- Moldura técnica de lente / visor esportivo -->
+  <g stroke="url(#goldGrad)" stroke-width="2" fill="none">
+    <!-- Cantos táticos (Target Brackets) -->
+    <path d="M 50 100 L 50 50 L 100 50"/>
+    <path d="M 750 100 L 750 50 L 700 50"/>
+    <path d="M 50 900 L 50 950 L 100 950"/>
+    <path d="M 750 900 L 750 950 L 700 950"/>
+  </g>
+
+  <!-- Tags e Metadados do Atleta (Scout HUD) -->
+  <g font-family="'Host Grotesk', -apple-system, sans-serif">
+    <!-- Cabeçalho do HUD -->
+    <text x="70" y="85" fill="#FFE08A" font-size="14" font-weight="700" letter-spacing="3">CAMPOS // SCOUT ID: 08-CPS</text>
+    <text x="730" y="85" fill="#B7A8D0" font-size="13" font-weight="600" text-anchor="end" letter-spacing="2">CAMPO &amp; AREIA</text>
+
+    <!-- Rodapé informativo do placeholder -->
+    <rect x="70" y="880" width="660" height="48" rx="8" fill="#140E24" fill-opacity="0.85" stroke="#6D28D9" stroke-width="1"/>
+    <circle cx="95" cy="904" r="6" fill="#F5B63A"/>
+    <text x="115" y="909" fill="#F4F0FA" font-size="15" font-weight="600" letter-spacing="1">FOTO PLACEHOLDER</text>
+    <text x="710" y="909" fill="#B7A8D0" font-size="13" font-weight="500" text-anchor="end">Substitua por /img/campos.jpg</text>
+  </g>
+</svg>

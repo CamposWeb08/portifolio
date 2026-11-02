@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMPOS // Atleta de Futebol & Futevôlei</title>
+  <meta name="description" content="Portfólio de Campos: meio-campo e segundo volante (17 anos, Campinas). Futebol e futevôlei com energia, técnica e competição.">
+
+  <!-- Script inline para prevenir flash de tema incorreto (FOUC) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('campos-theme');
+        const theme = savedTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Google Fonts: Bowlby One & Host Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Menu de Navegação Fixo -->
+  <header class="site-header">
+    <nav class="nav-container" aria-label="Navegação principal">
+      <a href="#hero" class="nav-brand" aria-label="Campos Início">
+        <span class="brand-monogram">C.08</span>
+        <span class="brand-badge">ATLETA</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#projetos" class="nav-link">Projetos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Botão de alternar claro/escuro com ícone contrast (Material Symbols) -->
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar modo claro e escuro" title="Alternar tema" aria-pressed="false">
+          <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section id="hero" class="hero-section" aria-label="Apresentação de Campos">
+
+      <!-- Elemento visual de apoio em CSS puro com parallax 3D (campo + quadra + círculos concêntricos) -->
+      <div class="visual-stage" aria-hidden="true">
+        <!-- Iluminação e círculos concêntricos em tons de roxo -->
+        <div class="concentric-system" id="concentricSystem">
+          <div class="radial-glow"></div>
+          <div class="concentric-ring ring-1"></div>
+          <div class="concentric-ring ring-2"></div>
+          <div class="concentric-ring ring-3"></div>
+          <div class="concentric-ring ring-4"></div>
+          <div class="concentric-ring ring-5"></div>
+        </div>
+
+        <!-- Linhas táticas em contorno dourado (futebol e futevôlei) -->
+        <div class="tactical-field" id="tacticalField">
+          <div class="field-boundary">
+            <!-- Linha divisória e círculo central (Futebol) -->
+            <div class="half-pitch-line"></div>
+            <div class="center-circle">
+              <div class="center-spot"></div>
+            </div>
+            <div class="penalty-arc"></div>
+            <div class="penalty-box"></div>
+
+            <!-- Marcações de quadra de areia e zona de ataque (Futevôlei) -->
+            <div class="sand-court-overlay">
+              <div class="sand-net-line"></div>
+              <div class="sand-attack-zone"></div>
+              <div class="sand-perimeter"></div>
+            </div>
+
+            <!-- Marcadores técnicos / coordenadas de jogo -->
+            <span class="coord coord-tl">17Y // CPS</span>
+            <span class="coord coord-br">MC // 2V</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conteúdo principal do Hero -->
+      <div class="hero-container">
+        
+        <!-- Linha pequena / Tag esportiva -->
+        <div class="hero-sport-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">Futebol · Futevôlei</span>
+          <span class="badge-division"></span>
+          <span class="badge-location">Campinas, SP</span>
+        </div>
+
+        <!-- Nome em tamanho monumental com efeito de tinta dourada (Bowlby One) -->
+        <div class="hero-title-wrapper" id="heroTitleWrapper">
+          <h1 class="hero-name ink-title" data-text="CAMPOS" title="CAMPOS">CAMPOS</h1>
+        </div>
+
+        <!-- Frase de Apresentação -->
+        <p class="hero-tagline">
+          Meio-campo, 17 anos, Campinas. Grama de dia, areia no resto do tempo.
+        </p>
+
+        <!-- Botão CTA com degradê dourado -->
+        <div class="hero-cta-group">
+          <a href="#projetos" class="cta-button" id="ctaBtn">
+            <span class="cta-text">Ver minha carreira</span>
+            <span class="cta-icon-wrapper">
+              <svg class="cta-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4.166 10h11.667M10.833 4.167L16.666 10l-5.833 5.833" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+
+        <!-- Indicador de rolagem sutil para imersão -->
+        <div class="scroll-indicator" aria-hidden="true">
+          <span class="scroll-track">
+            <span class="scroll-thumb"></span>
+          </span>
+          <span class="scroll-label">EXPLORAR</span>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="sobre" class="about-section" aria-label="Sobre o atleta Campos">
+      <div class="about-container">
+        
+        <!-- Cabeçalho da Seção -->
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="tag-number">01</span>
+            <span class="tag-slash">//</span>
+            <span class="tag-title">TRAJETÓRIA &amp; PERFIL</span>
+          </div>
+          <h2 class="section-title ink-title" data-text="SOBRE MIM">SOBRE MIM</h2>
+        </div>
+
+        <!-- Conteúdo em Grid (Foto do Atleta + História de Carreira) -->
+        <div class="about-grid">
+          
+          <!-- Coluna 1: Foto do Atleta (Placeholder local estilizado com suporte a troca fácil) -->
+          <div class="about-photo-card">
+            <div class="photo-wrapper">
+              <img 
+                src="img/atleta-placeholder.svg" 
+                alt="Foto de Campos - Meio-campo e atleta de futevôlei" 
+                class="athlete-photo"
+                loading="lazy"
+                width="800"
+                height="1000"
+              >
+              <div class="photo-overlay-glass"></div>
+              
+              <!-- Badges informativas sobre a foto -->
+              <div class="photo-badge-top">
+                <span class="badge-status-dot"></span>
+                <span class="badge-status-text">EM ATIVIDADE</span>
+              </div>
+
+              <div class="photo-badge-bottom">
+                <span class="photo-athlete-name">CAMPOS</span>
+                <span class="photo-athlete-role">MC · 2º VOLANTE · FUTEVÔLEI</span>
+              </div>
+            </div>
+
+            <!-- Cantos táticos (detalhe visual de mira/arena) -->
+            <div class="photo-corner corner-tl"></div>
+            <div class="photo-corner corner-tr"></div>
+            <div class="photo-corner corner-bl"></div>
+            <div class="photo-corner corner-br"></div>
+          </div>
+
+          <!-- Coluna 2: Texto biográfico e destaques técnicos -->
+          <div class="about-content-card">
+            <div class="bio-text-wrapper">
+              <p class="bio-lead">
+                Comecei no futebol aos 7 anos e hoje atuo como meio-campo e segundo volante: ler o jogo, proteger a saída de bola e chegar de surpresa. Conquistei a Liga Campineira e a Lindóia Cup.
+              </p>
+              <p class="bio-secondary">
+                Aos 16, descobri o futevôlei, onde já subi ao pódio em torneios. No meio do caminho, um rompimento parcial do ligamento colateral medial me tirou do campo. Voltei mais cuidadoso com o corpo e com a cabeça.
+              </p>
+            </div>
+
+            <!-- Destaques esportivos em cards técnicos -->
+            <div class="career-highlights">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <span class="material-symbols-outlined" aria-hidden="true">sports_soccer</span>
+                </div>
+                <div class="highlight-info">
+                  <span class="highlight-label">Desde os 7 anos</span>
+                  <span class="highlight-val">Futebol de Base</span>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <span class="material-symbols-outlined" aria-hidden="true">emoji_events</span>
+                </div>
+                <div class="highlight-info">
+                  <span class="highlight-label">Campeão</span>
+                  <span class="highlight-val">Liga Campineira &amp; Lindóia Cup</span>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <span class="material-symbols-outlined" aria-hidden="true">waves</span>
+                </div>
+                <div class="highlight-info">
+                  <span class="highlight-label">Aos 16 anos</span>
+                  <span class="highlight-val">Pódios no Futevôlei</span>
+                </div>
+              </div>
+
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <span class="material-symbols-outlined" aria-hidden="true">healing</span>
+                </div>
+                <div class="highlight-info">
+                  <span class="highlight-label">Resiliência</span>
+                  <span class="highlight-val">Retorno após LCM</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Âncora de destino suave para a seção Projetos (próxima etapa) -->
+    <div id="projetos" class="section-anchor-target"></div>
+    <div id="contato" class="section-anchor-target"></div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
